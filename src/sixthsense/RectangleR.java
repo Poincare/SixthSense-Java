@@ -1,3 +1,7 @@
+/*
+Authors: Dhaivat Pandya
+*/
+
 package sixthsense;
 
 public class RectangleR {
