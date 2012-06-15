@@ -55,4 +55,11 @@ public class PointRTests {
 		assertTrue(o.equals(o));
 	}
 
+	@Test
+	public void testDistance() {
+		PointR a = new PointR(1, 1, 0);
+		PointR b = new PointR(4, 5, 0);
+		
+		assertTrue(((float)PointR.distance(a, b)) == 5.0f);
+	}
 }

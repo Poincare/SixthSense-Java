@@ -10,10 +10,18 @@ public class PointR {
 		T = t;
 	}
 	
+	public PointR(double x, double y) {
+		this(x, y, 0);
+	}
+	
 	public PointR(PointR p) {
 		T = p.T;
 		X = p.X;
 		Y = p.Y;
+	}
+	
+	public static double distance(PointR a, PointR b) {
+		return Math.sqrt((a.X-b.X)*(a.X-b.X)+(a.Y-b.Y)*(a.Y-b.Y));
 	}
 	
 	public boolean equals(Object a) {
@@ -26,4 +34,6 @@ public class PointR {
 		}
 		return false;
 	} 
+	
+	
 }
