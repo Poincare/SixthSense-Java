@@ -24,6 +24,10 @@ public class PointR {
 		return Math.sqrt((a.X-b.X)*(a.X-b.X)+(a.Y-b.Y)*(a.Y-b.Y));
 	}
 	
+	public double distance(PointR b) {
+		return PointR.distance(this, b);
+	}
+	
 	public boolean equals(Object a) {
 		if(a instanceof PointR) {
 			PointR b = (PointR)a;

@@ -53,5 +53,10 @@ public class RectangleRTest {
 		assertTrue(length == 4);
 	}
 
+	@Test
+	public void testDiagonal() {
+		double length = rr.getDiagonal();
+		assertTrue(length == Math.sqrt(41));
+	}
 }
 

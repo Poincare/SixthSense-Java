@@ -60,6 +60,9 @@ public class RectangleR {
 		return Math.min(width, height);
 	}
 
+	public double getDiagonal() {
+		return PointR.distance(getTopleft(), getBottomRight());
+	}
 }
 
 
