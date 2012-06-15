@@ -58,5 +58,47 @@ public class RectangleRTest {
 		double length = rr.getDiagonal();
 		assertTrue(length == Math.sqrt(41));
 	}
+	
+	@Test
+	public void testEquals() {
+		RectangleR rr2 = new RectangleR(2, 3, 4, 5);
+		assertTrue(rr2.equals(rr) && rr.equals(rr2));
+	}
+	
+	@Test
+	public void testUnequalHeight() {
+		RectangleR rr2 = new RectangleR(2, 3, 4, 6);
+		assertFalse(rr2.equals(rr));
+	}
+	
+	@Test
+	public void testUnequalWidth() {
+		RectangleR rr2 = new RectangleR(2, 3, 5, 5);
+		assertFalse(rr2.equals(rr));
+	}
+	
+	@Test
+	public void testUnequalX() {
+		RectangleR rr2 = new RectangleR(3, 3, 4, 5);
+		assertFalse(rr2.equals(rr));
+	}
+	
+	@Test
+	public void testUnequalY() {
+		RectangleR rr2 = new RectangleR(2, 4, 4, 5);
+		assertFalse(rr2.equals(rr));
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -63,6 +63,16 @@ public class RectangleR {
 	public double getDiagonal() {
 		return PointR.distance(getTopleft(), getBottomRight());
 	}
+	
+	public boolean equals(Object b) {
+		if(b instanceof RectangleR) {
+			RectangleR c = (RectangleR)b;
+			if(c.x == this.x && c.y == this.y && c.height == this.height && c.width == this.width) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
 
 
