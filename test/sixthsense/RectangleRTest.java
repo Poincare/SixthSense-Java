@@ -110,6 +110,7 @@ public class RectangleRTest {
 		
 		assertTrue(box.equals(rr2));
 	}
+	
 }
 
 
