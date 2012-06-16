@@ -4,6 +4,8 @@ Authors: Dhaivat Pandya
 
 package sixthsense;
 
+import java.util.List;
+
 public class RectangleR {
 	//digits to which measurements are rounded
 	private int digits = 4;
@@ -78,7 +80,33 @@ public class RectangleR {
 		return false;
 	}
 	
-	//port complete
+	public static RectangleR findBox(List<PointR> points) {
+		double maxX = Double.MIN_VALUE;
+		double maxY = Double.MIN_VALUE;
+		
+		double minX = Double.MAX_VALUE;
+		double minY = Double.MAX_VALUE;
+		
+		for(PointR p : points) {
+			if(p.X > maxX) {
+				maxX = p.X;
+			}
+			
+			if(p.Y > maxY) {
+				maxY = p.Y;
+			}
+			
+			if(p.X < minX) {
+				minX = p.X;
+			}
+			
+			if(p.Y < minY) {
+				minY = p.Y;
+			}
+		}
+		
+		return new RectangleR(minX, minY, maxX-minX, maxY-minY);
+	}
 }
 
 

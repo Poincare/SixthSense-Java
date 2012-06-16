@@ -4,6 +4,8 @@ Authors: Dhaivat Pandya
 
 package sixthsense;
 
+import java.util.List;
+
 public class PointR {
 	public double X, Y;
 	public int T;
@@ -43,5 +45,27 @@ public class PointR {
 		return false;
 	} 
 	
+	public static PointR getCentroid(List<PointR> points) {
+		double xsum = 0;
+		double ysum = 0;
+		int n = points.size();
+		
+		for(PointR p : points ) {
+			xsum += p.X;
+			ysum += p.Y;
+		}
+		
+		return new PointR(xsum/n, ysum/n);
+	}
+	
+	public static double getPathLength(List<PointR> points) {
+		double total_distance = 0;
+		
+		for(int i = 1; i<points.size(); i++) {
+			total_distance += PointR.distance(points.get(i-1), points.get(i));
+		}
+		
+		return total_distance;
+	}
 	
 }

@@ -1,6 +1,13 @@
+/*
+ * Authors: Dhaivat Pandya
+ */
+
 package sixthsense;
 
 import static org.junit.Assert.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -87,6 +94,21 @@ public class RectangleRTest {
 	public void testUnequalY() {
 		RectangleR rr2 = new RectangleR(2, 4, 4, 5);
 		assertFalse(rr2.equals(rr));
+	}
+	
+	@Test
+	public void testFindBox() {
+		List<PointR> a = new ArrayList<PointR>();
+		
+		a.add(new PointR(1, 1, 0));
+		a.add(new PointR(5, 8, 0));
+		a.add(new PointR(9, 2, 0));
+		
+		RectangleR box = RectangleR.findBox(a);
+		
+		RectangleR rr2 = new RectangleR(1, 1, 8, 7);
+		
+		assertTrue(box.equals(rr2));
 	}
 }
 
