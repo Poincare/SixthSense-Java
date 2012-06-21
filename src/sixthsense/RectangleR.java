@@ -9,7 +9,7 @@ import java.util.List;
 public class RectangleR {
 	//digits to which measurements are rounded
 	private int digits = 4;
-	
+        //abcd	
 	//denote top left corner
 	private double x;
 	private double y;
@@ -106,6 +106,14 @@ public class RectangleR {
 		}
 		
 		return new RectangleR(minX, minY, maxX-minX, maxY-minY);
+	}
+
+	public int getDigits() {
+		return digits;
+	}
+
+	public void setDigits(int digits) {
+		this.digits = digits;
 	}
 }
 
