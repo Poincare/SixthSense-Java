@@ -1,2 +1,3 @@
 language: java
 install: ant build-project 
+test: ant build-project
