@@ -1,2 +1,2 @@
 language: java
-install: ant PointRTests
+install: ant build-project 
