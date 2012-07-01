@@ -7,6 +7,7 @@ What's been ported so far:
   * PointR
   * SizeR
   * RectangleR
+  * Category
 
 Please help out!
 
