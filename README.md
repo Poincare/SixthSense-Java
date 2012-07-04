@@ -1,7 +1,7 @@
 SixthSense-Java
 ===============
 
-The SixthSense java port
+The SixthSense java/Android port
 
 What's been ported so far:
   * PointR
