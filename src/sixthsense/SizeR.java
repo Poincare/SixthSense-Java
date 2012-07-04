@@ -24,7 +24,7 @@ public class SizeR {
 	
 	public double getHeight() {
 		return cy;
-	}
+	}       
 	
 	public SizeR(double x, double y) {
 		cx = x;
