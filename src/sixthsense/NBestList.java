@@ -1,3 +1,6 @@
+/**
+ * Authors: Aroop Ganguly
+ * */
 package sixthsense;
 
 import java.util.ArrayList;
