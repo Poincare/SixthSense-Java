@@ -1,3 +1,7 @@
+/**
+ * Authors: Aroop Ganguly
+ * */
+
 package sixthsense;
 
 import static org.junit.Assert.fail;
