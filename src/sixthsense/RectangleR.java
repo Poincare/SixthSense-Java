@@ -67,7 +67,7 @@ public class RectangleR {
 	}
 
 	public double getDiagonal() {
-		return PointR.distance(getTopleft(), getBottomRight());
+		return PointR.getDistance(getTopleft(), getBottomRight());
 	}
 	
 	public boolean equals(Object b) {
