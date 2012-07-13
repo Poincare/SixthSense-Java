@@ -1,5 +1,5 @@
 /*
- * Authors: Dhaivat Pandya
+ * Authors: Dhaivat Pandya, Aroop Ganguly
  */
 package sixthsense;
 
@@ -93,8 +93,8 @@ public class PointRTests {
 		points.add(p2);
 		points.add(p3);
 		points.add(p4);
-		if (Utils.FindBox(points).getMaxSide() != 4)
-			fail("Util.FindBox not working properly");
+		if (PointR.FindBox(points).getMaxSide() != 4)
+			fail("PointR.FindBox not working properly");
 	}
 	
 	@Test
@@ -104,7 +104,7 @@ public class PointRTests {
 		PointR p2 = new PointR(4, 2);
 		points.add(p1);
 		points.add(p2);
-		if (Utils.AngleInRadians(p1, p2, true) != Math.atan2(2, 4))
-			fail("Utils pathlength calculation not working properly");
+		if (PointR.AngleInRadians(p1, p2, true) != Math.atan2(2, 4))
+			fail("PointR pathlength calculation not working properly");
 	}
 }

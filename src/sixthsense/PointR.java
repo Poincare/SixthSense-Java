@@ -1,5 +1,6 @@
 /*
  * Authors: Dhaivat Pandya
+ * 			Aroop Ganguly
  */
 package sixthsense;
 
@@ -180,7 +181,7 @@ public class PointR {
 	public static ArrayList<PointR> TranslateBBoxTo(ArrayList<PointR> points,
 			PointR toPt) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
-		RectangleR r = Utils.FindBox(points);
+		RectangleR r = PointR.FindBox(points);
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
 			p.X += (toPt.X - r.getX());
