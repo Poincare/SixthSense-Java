@@ -1,5 +1,5 @@
 /**
- * Authors: Aroop Ganguly, Dhaivat Pandya
+ * Authors: Aroop Ganguly
  */
 
 package sixthsense;
@@ -7,59 +7,59 @@ package sixthsense;
 import java.util.ArrayList;
 
 public class Category {
-	private String name;
-	private ArrayList<Gesture> prototypes;
+	private String _name;
+	private ArrayList<Gesture> _prototypes;
 
 	public Category(String name) {
-		this.name = name;
-		prototypes = null;
+		_name = name;
+		_prototypes = null;
 	}
 
 	public Category(String name, Gesture firstExample) {
-		this.name = name;
-		prototypes = new ArrayList<Gesture>();
-		addExample(firstExample);
+		_name = name;
+		_prototypes = new ArrayList<Gesture>();
+		AddExample(firstExample);
 	}
 
 	public Category(String name, ArrayList<?> examples) {
-		this.name = name;
-		prototypes = new ArrayList<Gesture>(examples.size());
+		_name = name;
+		_prototypes = new ArrayList<Gesture>(examples.size());
 		for (int i = 0; i < examples.size(); i++) {
 			Gesture p = (Gesture) examples.get(i);
-			addExample(p);
+			AddExample(p);
 		}
 	}
 
-	public String getName() {
-		return name;
+	public String Name() {
+		return _name;
 	}
 
-	public int getExamples() {
-		return prototypes.size();
+	public int Examples() {
+		return _prototypes.size();
 
 	}
 
 	public Gesture getGesture(int i) {
-		if (0 <= i && i < prototypes.size()) {
-			return (Gesture) prototypes.get(i);
+		if (0 <= i && i < _prototypes.size()) {
+			return (Gesture) _prototypes.get(i);
 		}
 		else {
 			return null;
 		}
 	}
 
-	public void addExample(Gesture p) {
+	public void AddExample(Gesture p) {
 		boolean success = true;
 		try {
 			// first, ensure that p's name is right
-			String name = parseName(p.Name);
-			if (this.name != name)
+			String name = ParseName(p.Name);
+			if (name != _name)
 				throw new Exception(
 						"Prototype name does not equal the name of the category to which it was added.");
 
 			// second, ensure that it doesn't already exist
-			for (int i = 0; i < prototypes.size(); i++) {
-				Gesture p0 = (Gesture) prototypes.get(i);
+			for (int i = 0; i < _prototypes.size(); i++) {
+				Gesture p0 = (Gesture) _prototypes.get(i);
 				if (p0.Name == p.Name)
 					throw new Exception(
 							"Prototype name was added more than once to its category.");
@@ -70,11 +70,11 @@ public class Category {
 			success = false;
 		}
 		if (success) {
-			prototypes.add(p);
+			_prototypes.add(p);
 		}
 	}
 
-	public static String parseName(String s) {
+	public static String ParseName(String s) {
 		String category = "";
 		for (int i = s.length() - 1; i >= 0; i--) {
 			if (!Character.isDigit(s.charAt(i))) {
