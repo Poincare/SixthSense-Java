@@ -1,5 +1,5 @@
 /**
- * Authors: Aroop Ganguly
+ * Authors: Aroop Ganguly, Dhaivat Pandya
  */
 
 package sixthsense;
@@ -14,7 +14,7 @@ public class CategoryTest {
 	@Test
 	public void testCtorForNameMemberInit() {
 		Category c = new Category("c1");
-		if (!c.Name().equals("c1")) {
+		if (!c.getName().equals("c1")) {
 			fail("Category constructor Name value incorrect");
 		}
 	}
@@ -28,10 +28,10 @@ public class CategoryTest {
 		catch (Exception e) {
 			fail("failed to add example, " + e.getMessage());
 		}
-		if (c == null || c.Examples() == 0) {
+		if (c == null || c.getExamples() == 0) {
 			fail("no examples added in constructor");
 		}
-		else if (c.Examples() > 1) {
+		else if (c.getExamples() > 1) {
 			fail("garbge values for examples inside Category");
 		}
 	}
@@ -51,7 +51,7 @@ public class CategoryTest {
 			fail("failed to add example, " + e.getMessage());
 		}
 
-		if (c == null || c.Examples() != data.size()) {
+		if (c == null || c.getExamples() != data.size()) {
 			fail("no examples added incorrectly in constructor");
 		}
 		else {
@@ -67,7 +67,7 @@ public class CategoryTest {
 	@Test
 	public void testName() {
 		Category c = new Category("test");
-		if (!c.Name().equals("test")) {
+		if (!c.getName().equals("test")) {
 			fail("Name not retrived correctly");
 		}
 	}
@@ -82,7 +82,7 @@ public class CategoryTest {
 		}
 
 		Category c = new Category("test", data);
-		if (!(c.Examples() == data.size())) {
+		if (!(c.getExamples() == data.size())) {
 			fail("Example() not working properly");
 		}
 	}
@@ -91,12 +91,12 @@ public class CategoryTest {
 	public void testAddExample() {
 		Category c = new Category("test");
 		try {
-			c.AddExample(new Gesture());
+			c.addExample(new Gesture());
 		}
 		catch (Exception e) {
 			fail("error in adding examples." + e.getMessage());
 		}
-		if (c.Examples() != 1) {
+		if (c.getExamples() != 1) {
 			fail("error in adding examples");
 		}
 	}
@@ -104,7 +104,7 @@ public class CategoryTest {
 	@Test
 	public void testParseName() {
 		String testStr = "abc1bcd";
-		if (Category.ParseName(testStr) != "abc1b") {
+		if (Category.parseName(testStr) != "abc1b") {
 			fail("ParseName is incorrect");
 		}
 	}
