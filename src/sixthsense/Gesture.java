@@ -8,11 +8,13 @@ import java.util.ArrayList;
 public class Gesture // : IComparable
 {
 	public String Name;
-	public ArrayList<?> RawPoints; // raw points (for drawing) -- read in from
-									// XML
-	public ArrayList<?> Points; // resampled points (for matching) -- done when
-								// loaded
+	public ArrayList<PointR> RawPoints; // raw points (for drawing) -- read in
+										// from
+	// XML
+	public ArrayList<PointR> Points; // resampled points (for matching) -- done
+										// when
 	
+	// loaded
 	public Gesture() {
 		this.Name = "";
 		this.RawPoints = null;
@@ -33,10 +35,10 @@ public class Gesture // : IComparable
 	// "indicative angle" of the
 	// stroke as defined by the angle between its centroid point and first
 	// point.
-	public Gesture(String name, ArrayList<?> points) {
+	public Gesture(String name, ArrayList<PointR> points) {
 		this.Name = name;
-		this.RawPoints = new ArrayList<Object>(points); // copy (saved for
-														// drawing)
+		this.RawPoints = points; // copy (saved for
+									// drawing)
 		// resample first (influences calculation of centroid)
 		// Points = Utils.Resample(points,
 		// GeometricRecognizer.NumResamplePoints);
@@ -84,6 +86,6 @@ public class Gesture // : IComparable
 	public static String ParseName(String filename) {
 		int start = filename.lastIndexOf('\\');
 		int end = filename.lastIndexOf('.');
-		return filename.substring(start + 1, end - start - 1);
+		return filename.substring(start+1, end);
 	}
 }

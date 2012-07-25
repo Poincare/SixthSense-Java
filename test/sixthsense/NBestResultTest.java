@@ -1,7 +1,6 @@
 /**
  * Authors: Aroop Ganguly
- * */
-
+ */
 package sixthsense;
 
 import static org.junit.Assert.fail;
@@ -25,18 +24,16 @@ public class NBestResultTest {
 			fail("IsEmpty not working properly for NBestResult");
 			return;
 		}
-		NBestResult r1 = new NBestResult("res1", 2.0, -1d, 34.0);
+		NBestResult r1 = new NBestResult("res1", -1d, 2.0, 34.0);
 		if (!r1.IsEmpty())
 			fail("IsEmpty not working properly for NBestResult");
 	}
 	
 	@Test
-	public void testCompareTo()
-	{
+	public void testCompareTo() {
 		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
 		NBestResult r2 = new NBestResult("res1", 2.0, 3.0, 34.0);
-		
-		if(r.compareTo(r2)!=0) fail("CompareTo not working properly for nBestResult");
-		
+		if (r.compareTo(r2) != 0)
+			fail("CompareTo not working properly for nBestResult");
 	}
 }

@@ -1,6 +1,6 @@
 /**
  * Authors: Aroop Ganguly
- * */
+ */
 package sixthsense;
 
 import java.util.ArrayList;
@@ -82,11 +82,11 @@ public class NBestList {
 	public String NamesString() {
 		String s = "";
 		if (_nBestList.size() > 0) {
-			for (NBestResult r : _nBestList) {
-				s += String.format("{0},", r.get_name());
+			for (int i = 0; i < _nBestList.size(); i++) {
+				s += _nBestList.get(i).get_name() + ",";
 			}
 		}
-		return ((s.endsWith(",")) ? s.trim() : s);
+		return ((s.endsWith(",")) ? s.substring(0, s.length() - 1) : s);
 	}
 	
 	/**
@@ -113,11 +113,11 @@ public class NBestList {
 	public String ScoresString() {
 		String s = "";
 		if (_nBestList.size() > 0) {
-			for (NBestResult r : _nBestList) {
-				s += String.format("{0},", Math.round(r.get_score()));
+			for (int i = 0; i < _nBestList.size(); i++) {
+				s += Math.round(_nBestList.get(i).get_score()) + ",";
 			}
 		}
-		return ((s.endsWith(",")) ? s.trim() : s);
+		return ((s.endsWith(",")) ? s.substring(0, s.length() - 1) : s);
 	}
 	
 	@SuppressWarnings("unchecked")

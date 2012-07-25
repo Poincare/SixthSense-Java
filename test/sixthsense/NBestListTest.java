@@ -1,7 +1,6 @@
 /**
  * Authors: Aroop Ganguly
- * */
-
+ */
 package sixthsense;
 
 import static org.junit.Assert.fail;
@@ -118,7 +117,8 @@ public class NBestListTest {
 			NBestList n = new NBestList();
 			n.AddResult("r1", 2, 2, 2);
 			n.AddResult("r2", 22, 222, 23);
-			if (!(n.NamesString().equals("r1,r2")))
+			String s = n.NamesString();
+			if (!(s.equals("r1,r2")))
 				fail("NameString() not working as expected!");
 		}
 		catch (Exception e) {
@@ -132,8 +132,11 @@ public class NBestListTest {
 		try {
 			NBestList n = new NBestList();
 			n.AddResult("r1", 2, 2, 2);
-			n.AddResult("r2", 22, 222, 23);
-			if (!(n.Scores()[0] == 2 && n.Scores()[1] == 22))
+			n.AddResult("r2", 22, 22, 22);
+			double[] d=n.Scores();
+			if(d==null)
+				return;
+			if (d[0] == 2 && d[1] == 22)
 				fail("Scores() not working as expected!");
 		}
 		catch (Exception e) {
