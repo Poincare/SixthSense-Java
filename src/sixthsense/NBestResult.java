@@ -18,23 +18,23 @@ public class NBestResult implements Comparable {
 	}
 	
 	// public final NBestResult Empty = new NBestResult("", -1d, -1d, 0d);
-	public String get_name() {
+	public String getName() {
 		return _name;
 	}
 	
-	public double get_score() {
+	public double getScore() {
 		return _score;
 	}
 	
-	public double get_distance() {
+	public double getDistance() {
 		return _distance;
 	}
 	
-	public double get_angle() {
+	public double getAngle() {
 		return _angle;
 	}
 	
-	public boolean IsEmpty() {
+	public boolean isEmpty() {
 		return _score == -1d;
 	}
 	
@@ -48,9 +48,9 @@ public class NBestResult implements Comparable {
 			else if (_score > r._score)
 				return -1;
 			else {
-				if (r.get_name().equals(get_name())
-						&& r.get_distance() == get_distance()
-						&& r.get_angle() == get_angle())
+				if (r.getName().equals(getName())
+						&& r.getDistance() == getDistance()
+						&& r.getAngle() == getAngle())
 					return 0;
 				else
 					return -1;

@@ -40,7 +40,7 @@ public class PointR {
 	}
 	
 	// Instance utility to judge distance between the instance and another point
-	public double distance(PointR b) {
+	public double getDistance(PointR b) {
 		return PointR.getDistance(this, b);
 	}
 	
@@ -79,11 +79,11 @@ public class PointR {
 		return total_distance;
 	}
 	
-	public static RectangleR FindBox(ArrayList<PointR> points) {
+	public static RectangleR findBox(ArrayList<PointR> points) {
 		double minX = Double.MIN_VALUE;
 		double maxX = Double.MIN_VALUE;
-		double minY = Double.MAX_VALUE;
-		double maxY = Double.MAX_VALUE;
+		double minY = Double.MIN_VALUE;
+		double maxY = Double.MIN_VALUE;
 		for (PointR p : points) {
 			if (p.X < minX)
 				minX = p.X;
@@ -103,10 +103,10 @@ public class PointR {
 	 * end point, where 0 degrees is straight right from start (+x-axis) and 90
 	 * degrees is straight down (+y-axis).
 	 */
-	public static double AngleInDegrees(PointR start, PointR end,
+	public static double getAngleInDegrees(PointR start, PointR end,
 			Boolean positiveOnly) {
-		double radians = AngleInRadians(start, end, positiveOnly);
-		return Rad2Deg(radians);
+		double radians = getAngleInRadians(start, end, positiveOnly);
+		return rad2Deg(radians);
 	}
 	
 	/***
@@ -115,7 +115,7 @@ public class PointR {
 	 * end point, where 0 radians is straight right from start (+x-axis) and
 	 * PI/2 radians is straight down (+y-axis).
 	 */
-	public static double AngleInRadians(PointR start, PointR end,
+	public static double getAngleInRadians(PointR start, PointR end,
 			boolean positiveOnly) {
 		double radians = 0.0;
 		if (start.X != end.X) {
@@ -134,23 +134,23 @@ public class PointR {
 		return radians;
 	}
 	
-	public static double Rad2Deg(double rad) {
+	public static double rad2Deg(double rad) {
 		return (rad * 180d / Math.PI);
 	}
 	
-	public static double Deg2Rad(double deg) {
+	public static double deg2Rad(double deg) {
 		return (deg * Math.PI / 180d);
 	}
 	
 	/*** rotate the points by the given degrees about their centroid */
-	public static ArrayList<PointR> RotateByDegrees(ArrayList<PointR> points,
+	public static ArrayList<PointR> rotateByDegrees(ArrayList<PointR> points,
 			double degrees) {
-		double radians = Deg2Rad(degrees);
-		return RotateByRadians(points, radians);
+		double radians = deg2Rad(degrees);
+		return rotateByRadians(points, radians);
 	}
 	
 	/** rotate the points by the given radians about their centroid */
-	public static ArrayList<PointR> RotateByRadians(ArrayList<PointR> points,
+	public static ArrayList<PointR> rotateByRadians(ArrayList<PointR> points,
 			double radians) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
 		PointR c = getCentroid(points);
@@ -178,7 +178,7 @@ public class PointR {
 	 * clockwise such that from +x-axis to +y-axis is +90 degrees, from +x-axis
 	 * to -x-axis is +180 degrees, and from +x-axis to -y-axis is -90 degrees.
 	 */
-	public static PointR RotatePoint(PointR p, PointR c, double radians) {
+	public static PointR rotatePoint(PointR p, PointR c, double radians) {
 		PointR q = new PointR(0, 0);
 		q.X = (p.X - c.X) * Math.cos(radians) - (p.Y - c.Y) * Math.sin(radians)
 				+ c.X;
@@ -191,10 +191,10 @@ public class PointR {
 	 * translates the points so that the upper-left corner of their bounding box
 	 * lies at 'toPt'
 	 */
-	public static ArrayList<PointR> TranslateBBoxTo(ArrayList<PointR> points,
+	public static ArrayList<PointR> translateBBoxTo(ArrayList<PointR> points,
 			PointR toPt) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
-		RectangleR r = PointR.FindBox(points);
+		RectangleR r = PointR.findBox(points);
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
 			p.X += (toPt.X - r.getX());
@@ -205,7 +205,7 @@ public class PointR {
 	}
 	
 	/*** translates the points so that their centroid lies at 'toPt' */
-	public static ArrayList<PointR> TranslateCentroidTo(
+	public static ArrayList<PointR> translateCentroidTo(
 			ArrayList<PointR> points, PointR toPt) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
 		PointR centroid = getCentroid(points);
@@ -219,7 +219,7 @@ public class PointR {
 	}
 	
 	/** translates the points by the given delta amounts */
-	public static ArrayList<PointR> TranslateBy(ArrayList<PointR> points,
+	public static ArrayList<PointR> translateBy(ArrayList<PointR> points,
 			SizeR sz) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
 		for (int i = 0; i < points.size(); i++) {
@@ -235,9 +235,9 @@ public class PointR {
 	 * scales the points so that they form the size given. does not restore the
 	 * origin of the box
 	 **/
-	public static ArrayList<PointR> ScaleTo(ArrayList<PointR> points, SizeR sz) {
+	public static ArrayList<PointR> scaleTo(ArrayList<PointR> points, SizeR sz) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
-		RectangleR r = FindBox(points);
+		RectangleR r = findBox(points);
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
 			if (r.getWidth() != 0d)
@@ -253,9 +253,9 @@ public class PointR {
 	 * scales by the percentages contained in the 'sz' parameter. values of 1.0
 	 * would result in the identity scale (that is, no change).
 	 */
-	public static ArrayList<PointR> ScaleBy(ArrayList<PointR> points, SizeR sz) {
+	public static ArrayList<PointR> scaleBy(ArrayList<PointR> points, SizeR sz) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
-		RectangleR r = FindBox(points);
+		RectangleR r = findBox(points);
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
 			p.X *= sz.getWidth();
@@ -271,10 +271,10 @@ public class PointR {
 	 * warped proportionally, rather than independently, like in the function
 	 * ScaleTo.
 	 */
-	public static ArrayList<PointR> ScaleToMax(ArrayList<PointR> points,
+	public static ArrayList<PointR> scaleToMax(ArrayList<PointR> points,
 			RectangleR box) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
-		RectangleR r = FindBox(points);
+		RectangleR r = findBox(points);
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
 			p.X *= (box.getMaxSide() / r.getMaxSide());
@@ -290,10 +290,10 @@ public class PointR {
 	 * warped proportionally, rather than independently, like in the function
 	 * ScaleTo.
 	 */
-	public static ArrayList<PointR> ScaleToMin(ArrayList<PointR> points,
+	public static ArrayList<PointR> scaleToMin(ArrayList<PointR> points,
 			RectangleR box) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
-		RectangleR r = FindBox(points);
+		RectangleR r = findBox(points);
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
 			p.X *= (box.getMinSide() / r.getMinSide());
@@ -303,7 +303,7 @@ public class PointR {
 		return newPoints;
 	}
 	
-	public static ArrayList<PointR> Resample(ArrayList<PointR> points, int n) {
+	public static ArrayList<PointR> resample(ArrayList<PointR> points, int n) {
 		double I = getPathLength(points) / (n - 1); // interval length
 		double D = 0.0;
 		ArrayList<PointR> srcPts = new ArrayList<PointR>(points);
@@ -339,7 +339,7 @@ public class PointR {
 	 * corresponding point distances. assumes that each path has been resampled
 	 * to the same number of points at the same distance apart.
 	 */
-	public static double PathDistance(ArrayList<PointR> path1,
+	public static double getPathDistance(ArrayList<PointR> path1,
 			ArrayList<PointR> path2) {
 		double distance = 0;
 		for (int i = 0; i < path1.size(); i++) {

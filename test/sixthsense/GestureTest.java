@@ -10,7 +10,7 @@ public class GestureTest {
 	@Test
 	public void testCtorForNameMemberInit() {
 		Gesture g = new Gesture();
-		if (g.Name != "") {
+		if (g.getName() != "") {
 			fail("Gesture not initialized properly");
 		}
 	}
@@ -18,15 +18,15 @@ public class GestureTest {
 	@Test
 	public void testCtorForNameAndRawPointsInit() {
 		Gesture g = new Gesture("new_gesture", new ArrayList<PointR>());
-		if (!g.Name.equals("new_gesture") || g.RawPoints != null) {
+		if (!g.getName().equals("new_gesture") || g.getRawPoints() == null) {
 			fail("Gesture not initialized properly");
 		}
-		//to be further implemented once GeometricRecognizer is implemented
+		// to be further implemented once GeometricRecognizer is implemented
 	}
 	
 	@Test
 	public void testDuration() {
-	//to be implemented once GeometricRecognizer is implemented
+		// to be implemented once GeometricRecognizer is implemented
 	}
 	
 	@Test
@@ -34,7 +34,7 @@ public class GestureTest {
 		Gesture g1 = new Gesture("gest1", new ArrayList<PointR>());
 		Gesture g2 = new Gesture("gest2", new ArrayList<PointR>());
 		try {
-			if (g1.CompareTo(g2) == 0)
+			if (g1.compareTo(g2) == 0)
 				fail("Gesture compareTo not working properly");
 		}
 		catch (Exception e) {

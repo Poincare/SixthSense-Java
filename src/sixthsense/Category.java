@@ -44,15 +44,15 @@ public class Category {
 			return (Gesture) prototypes.get(i);
 		}
 		else {
-			return null;
+			throw new Exception("prototypes not initialized");
 		}
 	}
 	
 	public void addExample(Gesture p) throws Exception {
 		boolean success = true;
 		// first, ensure that p's name is right
-		String name = parseName(p.name);
-		if (this.name != name) {
+		String nameStr = parseName(p.getName());
+		if (this.name != nameStr) {
 			success = false;
 			throw new Exception(
 					"Prototype name does not equal the name of the category to which it was added.");
@@ -60,7 +60,7 @@ public class Category {
 		// second, ensure that it doesn't already exist
 		for (int i = 0; i < prototypes.size(); i++) {
 			Gesture p0 = (Gesture) prototypes.get(i);
-			if (p0.name == p.name) {
+			if (p0.getName() == p.getName()) {
 				success = false;
 				throw new Exception(
 						"Prototype name was added more than once to its category.");
