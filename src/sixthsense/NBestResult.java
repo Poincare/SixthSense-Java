@@ -17,8 +17,7 @@ public class NBestResult implements Comparable {
 		_angle = angle;
 	}
 	
-	public final NBestResult Empty = new NBestResult("", -1d, -1d, 0d);
-	
+	// public final NBestResult Empty = new NBestResult("", -1d, -1d, 0d);
 	public String get_name() {
 		return _name;
 	}

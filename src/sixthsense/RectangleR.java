@@ -82,7 +82,7 @@ public class RectangleR {
 
 	//get the length of the diagonal of the rectangle
 	public double getDiagonal() {
-		return PointR.distance(getTopleft(), getBottomRight());
+		return PointR.getDistance(getTopleft(), getBottomRight());
 	}
 	
 	//basic equals override - checks equality of everything, not just if translated
