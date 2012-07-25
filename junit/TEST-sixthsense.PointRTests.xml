@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuite errors="0" failures="0" hostname="Anarchy99.local" name="sixthsense.PointRTests" tests="9" time="0.147" timestamp="2012-06-26T07:15:11">
+  <properties>
+    <property name="java.vendor" value="Apple Inc." />
+    <property name="sun.java.launcher" value="SUN_STANDARD" />
+    <property name="jikes.class.path" value=":/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/alt-rt.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/alt-string.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/charsets.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/classes.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/dt.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/jce.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/jconsole.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/jsse.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/management-agent.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/../Classes/ui.jar" />
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers" />
+    <property name="env.GEM_HOME" value="/Users/dhaivatpandya/.rvm/gems/ruby-1.9.3-p194" />
+    <property name="os.name" value="Mac OS X" />
+    <property name="sun.boot.class.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsfd.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/classes.jar:/System/Library/Frameworks/JavaVM.framework/Frameworks/JavaRuntimeSupport.framework/Resources/Java/JavaRuntimeSupport.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/ui.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/laf.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/sunrsasign.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jsse.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/jce.jar:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Classes/charsets.jar" />
+    <property name="env.TMPDIR" value="/var/folders/pG/pGz0zK32G0iagoS-NxcPzk+++TM/-Tmp-/" />
+    <property name="env.PWD" value="/Users/dhaivatpandya/dev/SixthSense-Java" />
+    <property name="env.LANG" value="en_US.UTF-8" />
+    <property name="java.vm.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="ant.home" value="/usr/share/ant" />
+    <property name="java.runtime.version" value="1.6.0_29-b11-402-10M3527" />
+    <property name="env.MY_RUBY_HOME" value="/Users/dhaivatpandya/.rvm/rubies/ruby-1.9.3-p194" />
+    <property name="ant.file.type.SixthSense-Java" value="file" />
+    <property name="env.Apple_PubSub_Socket_Render" value="/tmp/launch-6CoNzf/Render" />
+    <property name="env.DISPLAY" value="/tmp/launch-CtoId8/org.x:0" />
+    <property name="env.rvm_version" value="1.12.5 (stable)" />
+    <property name="user.name" value="dhaivatpandya" />
+    <property name="env.escape_flag" value="1" />
+    <property name="env.USER" value="dhaivatpandya" />
+    <property name="env.SHELL" value="/bin/bash" />
+    <property name="env.__CF_USER_TEXT_ENCODING" value="0x1F6:0:0" />
+    <property name="awt.nativeDoubleBuffering" value="true" />
+    <property name="env.PATH" value="/Users/dhaivatpandya/.rvm/gems/ruby-1.9.3-p194/bin:/Users/dhaivatpandya/.rvm/gems/ruby-1.9.3-p194@global/bin:/Users/dhaivatpandya/.rvm/rubies/ruby-1.9.3-p194/bin:/Users/dhaivatpandya/.rvm/bin:/bin:/sbin:/usr/bin:/usr/local/bin:/usr/sbin:/usr/texbin:/usr/local/bin" />
+    <property name="user.language" value="en" />
+    <property name="env.rvm_prefix" value="/Users/dhaivatpandya" />
+    <property name="sun.boot.library.path" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Libraries" />
+    <property name="ant.project.default-target" value="build" />
+    <property name="ant.project.name" value="SixthSense-Java" />
+    <property name="env.rvm_path" value="/Users/dhaivatpandya/.rvm" />
+    <property name="env.RUBY_VERSION" value="ruby-1.9.3-p194" />
+    <property name="java.version" value="1.6.0_29" />
+    <property name="user.timezone" value="" />
+    <property name="env._first" value="0" />
+    <property name="sun.arch.data.model" value="64" />
+    <property name="java.endorsed.dirs" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/endorsed" />
+    <property name="sun.cpu.isalist" value="" />
+    <property name="sun.jnu.encoding" value="MacRoman" />
+    <property name="env.rvm_bin_path" value="/Users/dhaivatpandya/.rvm/bin" />
+    <property name="file.encoding.pkg" value="sun.io" />
+    <property name="env.SHLVL" value="1" />
+    <property name="ECLIPSE_HOME" value="../../Downloads/eclipse" />
+    <property name="file.separator" value="/" />
+    <property name="java.specification.name" value="Java Platform API Specification" />
+    <property name="java.class.version" value="50.0" />
+    <property name="user.country" value="US" />
+    <property name="java.home" value="/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home" />
+    <property name="java.vm.info" value="mixed mode" />
+    <property name="env.LOGNAME" value="dhaivatpandya" />
+    <property name="ant.file" value="/Users/dhaivatpandya/dev/SixthSense-Java/build.xml" />
+    <property name="os.version" value="10.6.8" />
+    <property name="env.JAVA_MAIN_CLASS_2672" value="org.apache.tools.ant.launch.Launcher" />
+    <property name="env.TERM_PROGRAM_VERSION" value="273.1" />
+    <property name="path.separator" value=":" />
+    <property name="java.vm.version" value="20.4-b02-402" />
+    <property name="env._second" value="1" />
+    <property name="ant.library.dir" value="/usr/share/ant/lib" />
+    <property name="junit.output.dir" value="junit" />
+    <property name="env.IRBRC" value="/Users/dhaivatpandya/.rvm/rubies/ruby-1.9.3-p194/.irbrc" />
+    <property name="java.awt.printerjob" value="apple.awt.CPrinterJob" />
+    <property name="env.TERM" value="xterm-color" />
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle" />
+    <property name="awt.toolkit" value="apple.awt.CToolkit" />
+    <property name="env.GEM_PATH" value="/Users/dhaivatpandya/.rvm/gems/ruby-1.9.3-p194:/Users/dhaivatpandya/.rvm/gems/ruby-1.9.3-p194@global" />
+    <property name="user.home" value="/Users/dhaivatpandya" />
+    <property name="target" value="1.6" />
+    <property name="java.specification.vendor" value="Sun Microsystems Inc." />
+    <property name="env.TERM_PROGRAM" value="Apple_Terminal" />
+    <property name="java.library.path" value=".:/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java" />
+    <property name="java.vendor.url" value="http://www.apple.com/" />
+    <property name="java.vm.vendor" value="Apple Inc." />
+    <property name="gopherProxySet" value="false" />
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment" />
+    <property name="ant.version" value="Apache Ant(TM) version 1.8.2 compiled on October 14 2011" />
+    <property name="java.class.path" value="/Users/dhaivatpandya/dev/SixthSense-Java/bin:/Users/dhaivatpandya/dev/SixthSense-Java/test/lib/junit-4.11-SNAPSHOT-20120416-1530.jar:/usr/share/java/ant-1.8.2/lib/ant-launcher.jar:/usr/share/ant/lib/ant.jar:/usr/share/ant/lib/ant-junit.jar:/usr/share/ant/lib/ant-junit4.jar" />
+    <property name="sun.java.command" value="org.apache.tools.ant.taskdefs.optional.junit.JUnitTestRunner sixthsense.PointRTests filtertrace=true haltOnError=false haltOnFailure=false formatter=org.apache.tools.ant.taskdefs.optional.junit.OutErrSummaryJUnitResultFormatter showoutput=false outputtoformatters=true logfailedtests=true logtestlistenerevents=false formatter=org.apache.tools.ant.taskdefs.optional.junit.XMLJUnitResultFormatter,/Users/dhaivatpandya/dev/SixthSense-Java/junit/TEST-sixthsense.PointRTests.xml crashfile=/Users/dhaivatpandya/dev/SixthSense-Java/junitvmwatcher6624724553962535679.properties propsfile=/Users/dhaivatpandya/dev/SixthSense-Java/junit4620314665657780227.properties" />
+    <property name="env.com.apple.java.jvmMode" value="client" />
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification" />
+    <property name="ant.file.type" value="file" />
+    <property name="java.vm.specification.version" value="1.0" />
+    <property name="sun.os.patch.level" value="unknown" />
+    <property name="sun.cpu.endian" value="little" />
+    <property name="env.HOME" value="/Users/dhaivatpandya" />
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="java.io.tmpdir" value="/var/folders/pG/pGz0zK32G0iagoS-NxcPzk+++TM/-Tmp-/" />
+    <property name="java.vendor.url.bug" value="http://bugreport.apple.com/" />
+    <property name="env.SSH_AUTH_SOCK" value="/tmp/launch-146VqG/Listeners" />
+    <property name="env.COMMAND_MODE" value="unix2003" />
+    <property name="mrj.build" value="10M3527" />
+    <property name="os.arch" value="x86_64" />
+    <property name="ant.file.SixthSense-Java" value="/Users/dhaivatpandya/dev/SixthSense-Java/build.xml" />
+    <property name="java.awt.graphicsenv" value="apple.awt.CGraphicsEnvironment" />
+    <property name="env.__array_start" value="0" />
+    <property name="java.ext.dirs" value="/Library/Java/Extensions:/System/Library/Java/Extensions:/System/Library/Java/JavaVirtualMachines/1.6.0.jdk/Contents/Home/lib/ext" />
+    <property name="mrj.version" value="1060.1.6.0_29-402" />
+    <property name="env.com.apple.java.jvmTask" value="CommandLine_Manual.java" />
+    <property name="user.dir" value="/Users/dhaivatpandya/dev/SixthSense-Java" />
+    <property name="line.separator" value="&#xa;" />
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM" />
+    <property name="basedir" value="/Users/dhaivatpandya/dev/SixthSense-Java" />
+    <property name="ant.java.version" value="1.6" />
+    <property name="ant.core.lib" value="/usr/share/ant/lib/ant.jar" />
+    <property name="source" value="1.6" />
+    <property name="file.encoding" value="MacRoman" />
+    <property name="java.specification.version" value="1.6" />
+    <property name="ant.project.invoked-targets" value="PointRTests" />
+  </properties>
+  <testcase classname="sixthsense.PointRTests" name="testCopyConstructor" time="0.0030" />
+  <testcase classname="sixthsense.PointRTests" name="test" time="0.0" />
+  <testcase classname="sixthsense.PointRTests" name="testEqualsGenericObject" time="0.0" />
+  <testcase classname="sixthsense.PointRTests" name="testEqualsWrongPoint" time="0.0" />
+  <testcase classname="sixthsense.PointRTests" name="testCentroid" time="0.0" />
+  <testcase classname="sixthsense.PointRTests" name="testPathLength" time="0.0" />
+  <testcase classname="sixthsense.PointRTests" name="testEqualsSameObject" time="0.0" />
+  <testcase classname="sixthsense.PointRTests" name="testDistance" time="0.0" />
+  <testcase classname="sixthsense.PointRTests" name="testEqualsRightPoint" time="0.0" />
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
