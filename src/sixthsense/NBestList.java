@@ -15,7 +15,7 @@ public class NBestList {
 		_nBestList = new ArrayList<NBestResult>();
 	}
 	
-	public void AddResult(String name, double score, double distance,
+	public void addResult(String name, double score, double distance,
 			double angle) {
 		NBestResult r = new NBestResult(name, score, distance, angle);
 		_nBestList.add(r);
@@ -24,10 +24,10 @@ public class NBestList {
 	/**
 	 * Gets the average pixel distance of the top result of the NBestList.
 	 **/
-	public double Angle() {
+	public double getAngle() {
 		if (_nBestList.size() > 0) {
 			NBestResult r = (NBestResult) _nBestList.get(0);
-			return r.get_angle();
+			return r.getAngle();
 		}
 		return 0.0;
 	}
@@ -35,10 +35,10 @@ public class NBestList {
 	/**
 	 * Gets the average pixel distance of the top result of the NBestList.
 	 **/
-	public double Distance() {
+	public double getDistance() {
 		if (_nBestList.size() > 0) {
 			NBestResult r = (NBestResult) _nBestList.get(0);
-			return r.get_distance();
+			return r.getDistance();
 		}
 		return -1.0;
 	}
@@ -47,43 +47,43 @@ public class NBestList {
 	 * acts as an indexer for the NBestList, and returns a Result at a specified
 	 * index
 	 */
-	public NBestResult Get(int index) {
+	public NBestResult get(int index) {
 		if (0 <= index && index < _nBestList.size()) {
 			return (NBestResult) _nBestList.get(index);
 		}
 		return null;
 	}
 	
-	public boolean IsEmpty() {
+	public boolean isEmpty() {
 		return _nBestList.size() == 0;
 	}
 	
 	/**
 	 * Gets the gesture name of the top result of the NBestList.
 	 **/
-	public String Name() {
+	public String getName() {
 		if (_nBestList.size() > 0) {
 			NBestResult r = (NBestResult) _nBestList.get(0);
-			return r.get_name();
+			return r.getName();
 		}
 		return "";
 	}
 	
-	public String[] Names() {
+	public String[] getNames() {
 		String[] s = new String[_nBestList.size()];
 		if (_nBestList.size() > 0) {
 			for (int i = 0; i < s.length; i++) {
-				s[i] = ((NBestResult) _nBestList.get(i)).get_name();
+				s[i] = ((NBestResult) _nBestList.get(i)).getName();
 			}
 		}
 		return s;
 	}
 	
-	public String NamesString() {
+	public String getNamesString() {
 		String s = "";
 		if (_nBestList.size() > 0) {
 			for (int i = 0; i < _nBestList.size(); i++) {
-				s += _nBestList.get(i).get_name() + ",";
+				s += _nBestList.get(i).getName() + ",";
 			}
 		}
 		return ((s.endsWith(",")) ? s.substring(0, s.length() - 1) : s);
@@ -92,36 +92,36 @@ public class NBestList {
 	/**
 	 * Gets the [0..1] matching score of the top result of the NBestList.
 	 **/
-	public double Score() {
+	public double getScore() {
 		if (_nBestList.size() > 0) {
 			NBestResult r = (NBestResult) _nBestList.get(0);
-			return r.get_score();
+			return r.getScore();
 		}
 		return -1.0;
 	}
 	
-	public double[] Scores() {
+	public double[] getScores() {
 		double[] s = new double[_nBestList.size()];
 		if (_nBestList.size() > 0) {
 			for (int i = 0; i < s.length; i++) {
-				s[i] = ((NBestResult) _nBestList.get(0)).get_score();
+				s[i] = ((NBestResult) _nBestList.get(0)).getScore();
 			}
 		}
 		return s;
 	}
 	
-	public String ScoresString() {
+	public String getScoresString() {
 		String s = "";
 		if (_nBestList.size() > 0) {
 			for (int i = 0; i < _nBestList.size(); i++) {
-				s += Math.round(_nBestList.get(i).get_score()) + ",";
+				s += Math.round(_nBestList.get(i).getScore()) + ",";
 			}
 		}
 		return ((s.endsWith(",")) ? s.substring(0, s.length() - 1) : s);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public void SortDescending() {
+	public void sortDescending() {
 		Collections.sort((List<NBestResult>) _nBestList);
 	}
 }

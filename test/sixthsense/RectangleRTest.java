@@ -1,7 +1,6 @@
-/*
+/**
  * Authors: Dhaivat Pandya
  */
-
 package sixthsense;
 
 import static org.junit.Assert.*;
@@ -17,17 +16,16 @@ public class RectangleRTest {
 	public RectangleRTest() {
 		rr = new RectangleR(2, 3, 4, 5);
 	}
-
+	
 	@Test
 	public void testValueConstructor() {
-		assertTrue((rr.getX() == 2 && rr.getY() == 3 && rr.getWidth() == 4 && rr.getHeight() == 5));
-		
+		assertTrue((rr.getX() == 2 && rr.getY() == 3 && rr.getWidth() == 4 && rr
+				.getHeight() == 5));
 	}
 	
 	@Test
 	public void testTopLeft() {
 		PointR tl = rr.getTopleft();
-		
 		assertTrue(tl.X == 2 && tl.Y == 3);
 	}
 	
@@ -35,8 +33,6 @@ public class RectangleRTest {
 	public void testBottomRight() {
 		PointR tl = rr.getBottomRight();
 		PointR tt = new PointR(6.0, 8.0);
-		
-		
 		assertTrue(tt.equals(tl));
 	}
 	
@@ -44,7 +40,6 @@ public class RectangleRTest {
 	public void testCenterPoint() {
 		PointR tl = rr.getCenter();
 		PointR cc = new PointR(4.0, 5.5);
-	
 		assertTrue(tl.equals(cc));
 	}
 	
@@ -59,7 +54,7 @@ public class RectangleRTest {
 		double length = rr.getMinSide();
 		assertTrue(length == 4);
 	}
-
+	
 	@Test
 	public void testDiagonal() {
 		double length = rr.getDiagonal();
@@ -99,29 +94,11 @@ public class RectangleRTest {
 	@Test
 	public void testFindBox() {
 		List<PointR> a = new ArrayList<PointR>();
-		
 		a.add(new PointR(1, 1, 0));
 		a.add(new PointR(5, 8, 0));
 		a.add(new PointR(9, 2, 0));
-		
 		RectangleR box = RectangleR.findBox(a);
-		
 		RectangleR rr2 = new RectangleR(1, 1, 8, 7);
-		
 		assertTrue(box.equals(rr2));
 	}
-	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

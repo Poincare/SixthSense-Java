@@ -7,18 +7,27 @@ import java.util.ArrayList;
 
 public class Gesture // : IComparable
 {
-	public String Name;
-	public ArrayList<PointR> RawPoints; // raw points (for drawing) -- read in
-										// from
+	private String name;
+	private ArrayList<PointR> rawPoints; // raw points (for drawing) -- read in
+	
+	public ArrayList<PointR> getRawPoints() {
+		return rawPoints;
+	}
+	
+	public void setRawPoints(ArrayList<PointR> rawPoints) {
+		this.rawPoints = rawPoints;
+	}
+	
+	// from
 	// XML
-	public ArrayList<PointR> Points; // resampled points (for matching) -- done
+	public ArrayList<PointR> points; // resampled points (for matching) -- done
 										// when
 	
 	// loaded
 	public Gesture() {
-		this.Name = "";
-		this.RawPoints = null;
-		this.Points = null;
+		this.setName("");
+		this.rawPoints = null;
+		this.points = null;
 	}
 	
 	// when a new prototype is made, its raw points are resampled into n
@@ -36,8 +45,8 @@ public class Gesture // : IComparable
 	// stroke as defined by the angle between its centroid point and first
 	// point.
 	public Gesture(String name, ArrayList<PointR> points) {
-		this.Name = name;
-		this.RawPoints = points; // copy (saved for
+		this.setName(name);
+		this.rawPoints = points; // copy (saved for
 									// drawing)
 		// resample first (influences calculation of centroid)
 		// Points = Utils.Resample(points,
@@ -56,10 +65,10 @@ public class Gesture // : IComparable
 		// GeometricRecognizer.ResampleOrigin);
 	}
 	
-	public int Duration() {
-		if (RawPoints.size() >= 2) {
-			PointR p0 = (PointR) RawPoints.get(0);
-			PointR pn = (PointR) RawPoints.get(RawPoints.size() - 1);
+	public int getDuration() {
+		if (rawPoints.size() >= 2) {
+			PointR p0 = (PointR) rawPoints.get(0);
+			PointR pn = (PointR) rawPoints.get(rawPoints.size() - 1);
 			return pn.T - p0.T;
 		}
 		else {
@@ -68,10 +77,10 @@ public class Gesture // : IComparable
 	}
 	
 	// sorts in descending order of Score
-	public int CompareTo(Object obj) throws Exception {
+	public int compareTo(Object obj) throws Exception {
 		if (obj.getClass().equals(Gesture.class)) {
 			Gesture g = (Gesture) obj;
-			return Name.compareTo(g.Name);
+			return getName().compareTo(g.getName());
 		}
 		else
 			throw new Exception("object is not a Gesture");
@@ -86,6 +95,14 @@ public class Gesture // : IComparable
 	public static String ParseName(String filename) {
 		int start = filename.lastIndexOf('\\');
 		int end = filename.lastIndexOf('.');
-		return filename.substring(start+1, end);
+		return filename.substring(start + 1, end);
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	private void setName(String name) {
+		this.name = name;
 	}
 }
