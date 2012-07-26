@@ -1,7 +1,6 @@
-/*
+/**
  * Authors: Dhaivat Pandya
  */
-
 package sixthsense;
 
 import static org.junit.Assert.*;
@@ -25,7 +24,7 @@ public class SizeRTest {
 		SizeR sr2 = new SizeR(sr);
 		assertTrue(sr2.getCX() == sr.getCX() && sr2.getCY() == sr2.getCY());
 	}
-
+	
 	@Test
 	public void testGetWidthHeight() {
 		assertTrue(sr.getWidth() == sr.getCX() && sr.getHeight() == sr.getCY());

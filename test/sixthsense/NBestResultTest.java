@@ -11,8 +11,8 @@ public class NBestResultTest {
 	@Test
 	public void testCtorForMemberInit() {
 		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
-		if (!r.get_name().equals("res1") || r.get_score() != 2.0
-				|| r.get_distance() != 3.0 || r.get_angle() != 34.0) {
+		if (!r.getName().equals("res1") || r.getScore() != 2.0
+				|| r.getDistance() != 3.0 || r.getAngle() != 34.0) {
 			fail("Contructor not working properly for NBestResult");
 		}
 	}
@@ -20,12 +20,12 @@ public class NBestResultTest {
 	@Test
 	public void testIsEmpty() {
 		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
-		if (r.IsEmpty()) {
+		if (r.isEmpty()) {
 			fail("IsEmpty not working properly for NBestResult");
 			return;
 		}
 		NBestResult r1 = new NBestResult("res1", -1d, 2.0, 34.0);
-		if (!r1.IsEmpty())
+		if (!r1.isEmpty())
 			fail("IsEmpty not working properly for NBestResult");
 	}
 	
