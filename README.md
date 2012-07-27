@@ -8,6 +8,8 @@ What's been ported so far:
   * SizeR
   * RectangleR
   * Category
+  * NBestList
+  * NBestResult
 
 Please help out!
 
