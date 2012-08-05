@@ -52,23 +52,31 @@ public class Category {
 		boolean success = true;
 		// first, ensure that p's name is right
 		String nameStr = parseName(p.getName());
-		if (this.name != nameStr) {
+		if (!this.name.equals(nameStr)) {
 			success = false;
 			throw new Exception(
 					"Prototype name does not equal the name of the category to which it was added.");
 		}
-		// second, ensure that it doesn't already exist
-		for (int i = 0; i < prototypes.size(); i++) {
-			Gesture p0 = (Gesture) prototypes.get(i);
-			if (p0.getName() == p.getName()) {
-				success = false;
-				throw new Exception(
-						"Prototype name was added more than once to its category.");
+		// second, check if protypes exist or not
+		if (prototypes == null) {
+			prototypes = new ArrayList<Gesture>();
+			prototypes.add(p);
+			return;
+		}
+		else {
+			// third ensure that this gesture doesn't already exist in the
+			// prototypes
+			for (int i = 0; i < prototypes.size(); i++) {
+				Gesture p0 = (Gesture) prototypes.get(i);
+				if (p0.getName() == p.getName()) {
+					throw new Exception(
+							"Prototype name was added more than once to its category.");
+				}
 			}
 		}
-		if (success) {
-			prototypes.add(p);
-		}
+		// if the protoypes were not null and this gesture did not exist until
+		// now then add the gesture
+		prototypes.add(p);
 	}
 	
 	public static String parseName(String s) {
