@@ -57,13 +57,7 @@ public class NBestResult implements Comparable {
 			}
 		}
 		else {
-			try {
-				throw new Exception("object is not a Result");
-			}
-			catch (Exception e) {
-				e.printStackTrace();
-			}
-			return 0;
+			return -1;
 		}
 	}
 }
