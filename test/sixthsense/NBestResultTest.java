@@ -36,4 +36,52 @@ public class NBestResultTest {
 		if (r.compareTo(r2) != 0)
 			fail("CompareTo not working properly for nBestResult");
 	}
+	
+	@Test
+	public void testCompareToNameDiff() {
+		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
+		NBestResult r2 = new NBestResult("res2", 2.0, 3.0, 34.0);
+		if (r.compareTo(r2) != -1)
+			fail("CompareTo not working properly for nBestResult");
+	}
+	
+	@Test
+	public void testCompareToDistanceDiff() {
+		NBestResult r = new NBestResult("res1", 2.0, 4.0, 34.0);
+		NBestResult r2 = new NBestResult("res1", 2.0, 3.0, 34.0);
+		if (r.compareTo(r2) != -1)
+			fail("CompareTo not working properly for nBestResult");
+	}
+	
+	@Test
+	public void testCompareToAngleDiff() {
+		NBestResult r = new NBestResult("res1", 2.0, 3.0, 31.0);
+		NBestResult r2 = new NBestResult("res1", 2.0, 3.0, 34.0);
+		if (r.compareTo(r2) != -1)
+			fail("CompareTo not working properly for nBestResult");
+	}
+	
+	@Test
+	public void testCompareToScoreLess() {
+		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
+		NBestResult r2 = new NBestResult("res1", 1.0, 3.0, 34.0);
+		if (r.compareTo(r2) != -1)
+			fail("CompareTo not working properly for nBestResult");
+	}
+	
+	@Test
+	public void testCompareToScoreMORE() {
+		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
+		NBestResult r2 = new NBestResult("res1", 3.0, 3.0, 34.0);
+		if (r.compareTo(r2) != -1)
+			fail("CompareTo not working properly for nBestResult");
+	}
+	
+	@Test
+	public void testCompareToNonResult() {
+		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
+		Integer a = 0;
+		if (r.compareTo(a) == 0)
+			fail("CompareTo not working properly for nBestResult");
+	}
 }

@@ -120,6 +120,9 @@ public class NBestList {
 		return ((s.endsWith(",")) ? s.substring(0, s.length() - 1) : s);
 	}
 	
+	/**
+	 * Sorts the NBestResult List in the Descending order of their Scores
+	 */
 	@SuppressWarnings("unchecked")
 	public void sortDescending() {
 		Collections.sort((List<NBestResult>) _nBestList);
