@@ -1,5 +1,5 @@
 /**
- * Authors: Dhaivat Pandya
+ * Authors: Dhaivat Pandya, Aroop Ganguly
  */
 package sixthsense;
 
@@ -68,6 +68,13 @@ public class RectangleRTest {
 	}
 	
 	@Test
+	public void testUnequalType() {
+		RectangleR rr2 = new RectangleR(2, 3, 4, 5);
+		Integer a = 1;
+		assertTrue(!rr2.equals(a));
+	}
+	
+	@Test
 	public void testUnequalHeight() {
 		RectangleR rr2 = new RectangleR(2, 3, 4, 6);
 		assertFalse(rr2.equals(rr));
@@ -94,11 +101,29 @@ public class RectangleRTest {
 	@Test
 	public void testFindBox() {
 		List<PointR> a = new ArrayList<PointR>();
+		a.add(new PointR(Double.MIN_VALUE, Double.MIN_VALUE, 0));
+		a.add(new PointR(5, 8, 0));
+		a.add(new PointR(9, 2, 0));
+		RectangleR box = RectangleR.findBox(a);
+		RectangleR rr2 = new RectangleR(1, 1, 8, 7);
+		assertTrue(box.equals(rr2));
+	}
+	
+	@Test
+	public void testFindBoxDiffParams() {
+		List<PointR> a = new ArrayList<PointR>();
 		a.add(new PointR(1, 1, 0));
 		a.add(new PointR(5, 8, 0));
 		a.add(new PointR(9, 2, 0));
 		RectangleR box = RectangleR.findBox(a);
 		RectangleR rr2 = new RectangleR(1, 1, 8, 7);
 		assertTrue(box.equals(rr2));
+	}
+	
+	@Test
+	public void testDigits() {
+		rr.setDigits(2);
+		if (rr.getDigits() != 2)
+			fail("get or set digits not working properly");
 	}
 }

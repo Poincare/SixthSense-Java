@@ -19,6 +19,30 @@ public class CategoryTest {
 	}
 	
 	@Test
+	public void testCtorForNameGestureMember() {
+		Category c = null;
+		try {
+			c = new Category("circle", new Gesture("circle1",
+					new ArrayList<PointR>()));
+		}
+		catch (Exception e) {
+			fail("Category constructor Name value incorrect, Exception Details: "
+					+ e.getMessage());
+		}
+		try {
+			if (c != null && !c.getName().equals("circle")
+					&& c.getExamples() != 1
+					&& !c.getGesture(0).getName().equals("circle1")) {
+				fail("Category constructor Name value incorrect");
+			}
+		}
+		catch (Exception e) {
+			fail("Category constructor Name value incorrect, Exception Details: "
+					+ e.getMessage());
+		}
+	}
+	
+	@Test
 	public void testParseName() {
 		String testStr = "abc1121bcd";
 		if (!Category.parseName(testStr).equals("abc")) {
@@ -31,6 +55,44 @@ public class CategoryTest {
 		Category c = new Category("test");
 		if (!c.getName().equals("test")) {
 			fail("Name not retrived correctly");
+		}
+	}
+	
+	@Test
+	public void testGetGesttureWithNullPrototypes() {
+		Category c = new Category("c");
+		try {
+			c.getGesture(5);
+		}
+		catch (Exception e) {
+			if (e.getMessage().indexOf("prototypes not initialised") != -1) {
+				return;
+			}
+			else
+				fail("get gesture mal functioning!!");
+		}
+	}
+	
+	@Test
+	public void getGestureWithPrototypes() {
+		ArrayList<Gesture> prototypes = new ArrayList<Gesture>();
+		for (int i = 0; i < 5; i++) {
+			Gesture g = new Gesture("test" + i, new ArrayList<PointR>());
+			prototypes.add(g);
+		}
+		Category c = null;
+		try {
+			c = new Category("test", prototypes);
+		}
+		catch (Exception e1) {
+			fail("exception in initialising a category with prototypes");
+		}
+		try {
+			if (!c.getGesture(4).getName().equals("test4"))
+				fail("get gesture not working properly");
+		}
+		catch (Exception e) {
+			fail("get gesture not working properly");
 		}
 	}
 	
@@ -69,6 +131,48 @@ public class CategoryTest {
 				fail("error in adding examples." + e.getMessage());
 		}
 		if (c.getExamples() != 1) {
+			fail("error in adding examples");
+		}
+	}
+	
+	@Test
+	public void testAddExampleWithExisitngprototypes() {
+		ArrayList<Gesture> prototypes = new ArrayList<Gesture>();
+		for (int i = 0; i < 5; i++) {
+			Gesture g = new Gesture("test" + i, new ArrayList<PointR>());
+			prototypes.add(g);
+		}
+		Category c = null;
+		try {
+			c = new Category("test", prototypes);
+		}
+		catch (Exception e1) {
+			fail("exception in initialising a category with prototypes");
+		}
+		try {
+			c.addExample(new Gesture("test5", null));
+		}
+		catch (Exception e) {
+			if (e.getMessage().indexOf("Prototype name") != -1) {
+				return;
+			}
+			else
+				fail("error in adding examples." + e.getMessage());
+		}
+		if (c.getExamples() != 6) {
+			fail("error in adding examples");
+		}
+		try {
+			c.addExample(new Gesture("test5", null));
+		}
+		catch (Exception e) {
+			if (e.getMessage().indexOf("Prototype name") != -1) {
+				return;
+			}
+			else
+				fail("error in adding examples." + e.getMessage());
+		}
+		if (c.getExamples() != 6) {
 			fail("error in adding examples");
 		}
 	}
