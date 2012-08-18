@@ -1,12 +1,26 @@
 package sixthsense;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 
 public class GestureTest {
+	@Test
+	public void testRawPoints() {
+		Gesture g = new Gesture();
+		ArrayList<PointR> a = new ArrayList<PointR>();
+		a.add(new PointR(1, 1, 0));
+		
+		g.setRawPoints(a);
+		
+		assertEquals(a, g.getRawPoints());
+		
+	}
+
 	@Test
 	public void testCtorForNameMemberInit() {
 		Gesture g = new Gesture();

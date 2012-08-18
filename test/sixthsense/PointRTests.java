@@ -28,6 +28,14 @@ public class PointRTests {
 	}
 	
 	@Test
+	public void testZeroTConstructor() {
+		PointR pr = new PointR(1, 1);
+		PointR pr2 = new PointR(1, 1, 0);
+		
+		assertEquals(pr, pr2);
+	}
+	
+	@Test
 	public void testEqualsGenericObject() {
 		Object o = new Object();
 		PointR pr = new PointR(1, 6, 9);
@@ -62,6 +70,12 @@ public class PointRTests {
 		assertTrue(((float) PointR.getDistance(a, b)) == 5.0f);
 	}
 	
+	@Test
+	public void testInstanceDistance() {
+		PointR a = new PointR(1, 1, 0);
+		PointR b = new PointR(4, 5, 0);
+		assertTrue(a.getDistance(b) == PointR.getDistance(a, b));
+	}
 	@Test
 	public void testCentroid() {
 		List<PointR> a = new ArrayList<PointR>();
