@@ -96,11 +96,16 @@ public class RectangleR {
 	}
 	
 	// Find the largest box with the specified points
-	public static RectangleR findBox(List<PointR> points) {
+	public static RectangleR findBox(List<PointR> points) throws NotEnoughPointsException {
 		double maxX = Double.MIN_VALUE;
 		double maxY = Double.MIN_VALUE;
-		double minX = Double.MIN_VALUE;
-		double minY = Double.MIN_VALUE;
+		double minX = Double.MAX_VALUE;
+		double minY = Double.MAX_VALUE;
+		
+		if(points.size() < 4) {
+			throw new NotEnoughPointsException();
+		}
+		
 		for (PointR p : points) {
 			if (p.X > maxX) {
 				maxX = p.X;

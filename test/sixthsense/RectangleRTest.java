@@ -98,27 +98,45 @@ public class RectangleRTest {
 		assertFalse(rr2.equals(rr));
 	}
 	
-	@Test
-	public void testFindBox() {
+	@Test 
+	public void testFindBoxTooFewPoints() {
 		List<PointR> a = new ArrayList<PointR>();
 		a.add(new PointR(Double.MIN_VALUE, Double.MIN_VALUE, 0));
 		a.add(new PointR(5, 8, 0));
 		a.add(new PointR(9, 2, 0));
-		RectangleR box = RectangleR.findBox(a);
-		RectangleR rr2 = new RectangleR(1, 1, 8, 7);
-		assertTrue(box.equals(rr2));
+
+		try {
+			RectangleR.findBox(a);
+		} catch (NotEnoughPointsException e) {
+			assertTrue(true);
+			return;
+		}
+		
+		fail("findBox() did not threw an exception when needed");
 	}
 	
 	@Test
-	public void testFindBoxDiffParams() {
+	public void testFindBox() {
 		List<PointR> a = new ArrayList<PointR>();
-		a.add(new PointR(1, 1, 0));
-		a.add(new PointR(5, 8, 0));
-		a.add(new PointR(9, 2, 0));
-		RectangleR box = RectangleR.findBox(a);
-		RectangleR rr2 = new RectangleR(1, 1, 8, 7);
-		assertTrue(box.equals(rr2));
+		a.add(new PointR(1, 6, 0));
+		a.add(new PointR(2, 9, 0));
+		a.add(new PointR(9, 8, 0));
+		a.add(new PointR(6, 5, 0));
+		a.add(new PointR(8, 4, 0));
+		
+		RectangleR box = null;
+		
+		try {
+			box = RectangleR.findBox(a);
+		} catch (Exception e) {
+			fail ("findBox() threw unexpected exception");
+		}
+		
+		RectangleR should_be = new RectangleR(1, 4, 8, 5);
+		
+		assertTrue(box.equals(should_be));
 	}
+	
 	
 	@Test
 	public void testDigits() {
@@ -126,4 +144,5 @@ public class RectangleRTest {
 		if (rr.getDigits() != 2)
 			fail("get or set digits not working properly");
 	}
+
 }
