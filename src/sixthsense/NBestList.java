@@ -35,12 +35,13 @@ public class NBestList {
 	/**
 	 * Gets the average pixel distance of the top result of the NBestList.
 	 **/
-	public double getDistance() {
+	public double getDistance(){
 		if (_nBestList.size() > 0) {
 			NBestResult r = (NBestResult) _nBestList.get(0);
 			return r.getDistance();
 		}
-		return -1.0;
+		
+		return 0;
 	}
 	
 	/**
@@ -51,6 +52,7 @@ public class NBestList {
 		if (0 <= index && index < _nBestList.size()) {
 			return (NBestResult) _nBestList.get(index);
 		}
+		
 		return null;
 	}
 	
@@ -75,8 +77,10 @@ public class NBestList {
 			for (int i = 0; i < s.length; i++) {
 				s[i] = ((NBestResult) _nBestList.get(i)).getName();
 			}
+			return s;
 		}
-		return s;
+		
+		return null;
 	}
 	
 	public String getNamesString() {

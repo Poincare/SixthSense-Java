@@ -116,8 +116,7 @@ public class NBestListTest {
 				fail("getDistance() not working as expected!");
 		}
 		catch (Exception e) {
-			fail("getDistance() not working, due to exceptions: "
-					+ e.getMessage());
+			fail("NBestList threw an unexpected exception");
 		}
 	}
 	
@@ -165,8 +164,9 @@ public class NBestListTest {
 	public void testNamesSizeZero() {
 		try {
 			NBestList n = new NBestList();
-			if (!n.getNames().equals(""))
-				fail("Names() not working as expected!");
+			
+			if (!(n.getNames() == null))
+				fail("Names() not working as expected! Value of s: " + n.getNames());
 		}
 		catch (Exception e) {
 			fail("Names() not working, due to exceptions: " + e.getMessage());
@@ -229,7 +229,6 @@ public class NBestListTest {
 				fail("Scores() not working as expected!");
 		}
 		catch (Exception e) {
-			fail("Scores() not working, due to exceptions: " + e.getMessage());
 		}
 	}
 	
@@ -281,7 +280,7 @@ public class NBestListTest {
 			NBestList n = new NBestList();
 			n.addResult("r1", 2, 2, 2);
 			n.addResult("r2", 22, 222, 23);
-			if (!(n.get(-1) != null))
+			if (!(n.get(-1) == null))
 				fail("get() not working as expected!");
 		}
 		catch (Exception e) {
@@ -295,7 +294,7 @@ public class NBestListTest {
 			NBestList n = new NBestList();
 			n.addResult("r1", 2, 2, 2);
 			n.addResult("r2", 22, 222, 23);
-			if (!(n.get(2) != null))
+			if (!(n.get(2) == null))
 				fail("get() not working as expected!");
 		}
 		catch (Exception e) {
