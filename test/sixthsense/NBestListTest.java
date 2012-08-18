@@ -1,5 +1,5 @@
 /**
- * Authors: Aroop Ganguly
+ * Authors: Aroop Ganguly, Dhaivat Pandya
  */
 package sixthsense;
 
@@ -309,6 +309,7 @@ public class NBestListTest {
 			n.addResult("r1", 2, 2, 2);
 			n.addResult("r2", 22, 222, 23);
 			n.sortDescending();
+			
 			if (!(n.get(0).getName().equals("r2"))
 					&& !(n.get(1).getName().equals("r1")))
 				fail("get() not working as expected!");
