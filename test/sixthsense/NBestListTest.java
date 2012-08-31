@@ -3,7 +3,7 @@
  */
 package sixthsense;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -23,9 +23,38 @@ public class NBestListTest {
 	@Test
 	public void testIsEmpty() {
 		NBestList n = new NBestList();
-		if (!n.isEmpty())
-			fail("IsEmpty not working in NBestList");
+		assertTrue(n.isEmpty());
 	}
+	
+	@Test
+	public void testIsEmptyFalse(){
+		NBestList n = new NBestList();
+		n.addResult("bestName", 0, 0, 0);
+	
+		assertFalse(n.isEmpty());
+	}
+	
+    @Test(expected=NBestListEmptyException.class)
+    public void testNBestListEmptyException() throws NBestListEmptyException {
+		NBestList emptyList = new NBestList();
+		@SuppressWarnings("unused")
+		Object o = emptyList.get(0);
+    }
+	
+//	@Test
+//	public void testAccessEmptyNBestListCausesException() {
+//		NBestList n = new NBestList();
+//		try
+//		{
+//			n.get(0);
+//		}
+//		catch(NBestListEmptyException e)
+//		{
+//			assertTrue(e.getMessage().length() > 0);
+//		}
+//		
+//		fail("Expected NBestListEmptyException");
+//	}
 	
 	@Test
 	public void testAdd() {
