@@ -73,7 +73,7 @@ public class NBestResultTest {
 	public void testCompareToScoreMORE() {
 		NBestResult r = new NBestResult("res1", 2.0, 3.0, 34.0);
 		NBestResult r2 = new NBestResult("res1", 3.0, 3.0, 34.0);
-		if (r.compareTo(r2) != -1)
+		if (r.compareTo(r2) != 1)
 			fail("CompareTo not working properly for nBestResult");
 	}
 	

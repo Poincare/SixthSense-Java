@@ -3,7 +3,7 @@
  */
 package sixthsense;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import org.junit.Test;
 
@@ -23,8 +23,15 @@ public class NBestListTest {
 	@Test
 	public void testIsEmpty() {
 		NBestList n = new NBestList();
-		if (!n.isEmpty())
-			fail("IsEmpty not working in NBestList");
+		assertTrue(n.isEmpty());
+	}
+	
+	@Test
+	public void testIsEmptyFalse(){
+		NBestList n = new NBestList();
+		n.addResult("bestName", 0, 0, 0);
+	
+		assertFalse(n.isEmpty());
 	}
 	
 	@Test
