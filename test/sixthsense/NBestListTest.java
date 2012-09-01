@@ -34,28 +34,6 @@ public class NBestListTest {
 		assertFalse(n.isEmpty());
 	}
 	
-    @Test(expected=NBestListEmptyException.class)
-    public void testNBestListEmptyException() throws NBestListEmptyException {
-		NBestList emptyList = new NBestList();
-		@SuppressWarnings("unused")
-		Object o = emptyList.get(0);
-    }
-	
-//	@Test
-//	public void testAccessEmptyNBestListCausesException() {
-//		NBestList n = new NBestList();
-//		try
-//		{
-//			n.get(0);
-//		}
-//		catch(NBestListEmptyException e)
-//		{
-//			assertTrue(e.getMessage().length() > 0);
-//		}
-//		
-//		fail("Expected NBestListEmptyException");
-//	}
-	
 	@Test
 	public void testAdd() {
 		NBestList n = new NBestList();

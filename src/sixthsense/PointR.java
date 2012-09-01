@@ -80,9 +80,9 @@ public class PointR {
 	}
 	
 	public static RectangleR findBox(ArrayList<PointR> points) {
-		double minX = Double.MIN_VALUE;
+		double minX = Double.MAX_VALUE;
 		double maxX = Double.MIN_VALUE;
-		double minY = Double.MIN_VALUE;
+		double minY = Double.MAX_VALUE;
 		double maxY = Double.MIN_VALUE;
 		for (PointR p : points) {
 			if (p.X < minX)
@@ -195,10 +195,14 @@ public class PointR {
 			PointR toPt) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
 		RectangleR r = PointR.findBox(points);
+		
+		double deltaX = toPt.X - r.getX();
+		double deltaY = toPt.Y - r.getY();
+		
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
-			p.X += (toPt.X - r.getX());
-			p.Y += (toPt.Y - r.getY());
+			p.X += deltaX;
+			p.Y += deltaY;
 			newPoints.add(p);
 		}
 		return newPoints;
@@ -218,7 +222,10 @@ public class PointR {
 		return newPoints;
 	}
 	
-	/** translates the points by the given delta amounts */
+	/** translates the points by the given delta amounts 
+	 * Because Java passes by value (and not by reference),
+	 * the original list (its points) will be modified.
+	 * */
 	public static ArrayList<PointR> translateBy(ArrayList<PointR> points,
 			SizeR sz) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
@@ -227,6 +234,34 @@ public class PointR {
 			p.X += sz.getWidth();
 			p.Y += sz.getHeight();
 			newPoints.add(p);
+		}
+		return newPoints;
+	}
+	
+	/**
+	 * Translate all points' X and Y coordinates by the amount
+	 * specified in sz. If the input list should remain un-altered,
+	 * set byReference to True
+	 * @param points
+	 * @param sz
+	 * @param byReference
+	 * @return
+	 */
+	public static ArrayList<PointR> translateBy(ArrayList<PointR> points,
+			SizeR sz, boolean byReference){
+		
+		if(!byReference)
+			return translateBy(points,sz);
+		
+		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
+		for (int i = 0; i < points.size(); i++) {
+			PointR p = points.get(i);
+			PointR newPoint = new PointR(p.X,p.Y);
+			
+			newPoint.X += sz.getWidth();
+			newPoint.Y += sz.getHeight();
+			
+			newPoints.add(newPoint);
 		}
 		return newPoints;
 	}

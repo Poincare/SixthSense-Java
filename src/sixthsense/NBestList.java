@@ -49,10 +49,7 @@ public class NBestList {
 	 * index
 	 * @throws NBestListEmptyException 
 	 */
-	public NBestResult get(int index) throws NBestListEmptyException {
-		if (_nBestList.size() == 0)
-			throw new NBestListEmptyException();
-		
+	public NBestResult get(int index) {		
 		if (0 <= index && index < _nBestList.size()) {
 			return (NBestResult) _nBestList.get(index);
 		}
