@@ -255,7 +255,7 @@ public class PointR {
 	 */
 	public static ArrayList<PointR> scaleBy(ArrayList<PointR> points, SizeR sz) {
 		ArrayList<PointR> newPoints = new ArrayList<PointR>(points.size());
-		RectangleR r = findBox(points);
+		findBox(points);
 		for (int i = 0; i < points.size(); i++) {
 			PointR p = points.get(i);
 			p.X *= sz.getWidth();

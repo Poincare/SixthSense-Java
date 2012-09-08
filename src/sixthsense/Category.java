@@ -49,11 +49,9 @@ public class Category {
 	}
 	
 	public void addExample(Gesture p) throws Exception {
-		boolean success = true;
 		// first, ensure that p's name is right
 		String nameStr = parseName(p.getName());
 		if (!this.name.equals(nameStr)) {
-			success = false;
 			throw new Exception(
 					"Prototype name does not equal the name of the category to which it was added.");
 		}
