@@ -11,8 +11,10 @@ import java.util.List;
  * A utility class that basically implements the idea of a rectangle.
  */
 public class RectangleR {
+	
+	private static final int NBDIGITS = 4;
 	// digits to which measurements are rounded
-	private int digits = 4;
+	private int digits = NBDIGITS;
 	// abcd
 	// denote top left corner
 	private double x;
@@ -22,11 +24,11 @@ public class RectangleR {
 	private double height;
 	
 	// constructor to copy values over
-	public RectangleR(double X, double Y, double W, double H) {
-		x = X;
-		y = Y;
-		width = W;
-		height = H;
+	public RectangleR(double x, double y, double w, double h) {
+		this.x = x;
+		this.y = y;
+		this.width = w;
+		this.height = h;
 	}
 	
 	// get x value
@@ -61,10 +63,9 @@ public class RectangleR {
 	
 	// get center/centroid of the rectangle
 	public PointR getCenter() {
-		double center_x = x + width / 2;
-		double center_y = y + height / 2;
-		PointR res = new PointR(center_x, center_y);
-		return res;
+		double centerX = x + width / 2;
+		double centerY = y + height / 2;
+		return new PointR(centerX, centerY);
 	}
 	
 	// get the length of the longest side of the rectangle
@@ -102,22 +103,22 @@ public class RectangleR {
 		double minX = Double.MAX_VALUE;
 		double minY = Double.MAX_VALUE;
 		
-		if(points.size() < 4) {
+		if(points.size() < NBDIGITS) {
 			throw new NotEnoughPointsException();
 		}
 		
 		for (PointR p : points) {
-			if (p.X > maxX) {
-				maxX = p.X;
+			if (p.getX() > maxX) {
+				maxX = p.getX();
 			}
-			if (p.Y > maxY) {
-				maxY = p.Y;
+			if (p.getY() > maxY) {
+				maxY = p.getY();
 			}
-			if (p.X < minX) {
-				minX = p.X;
+			if (p.getX() < minX) {
+				minX = p.getX();
 			}
-			if (p.Y < minY) {
-				minY = p.Y;
+			if (p.getY() < minY) {
+				minY = p.getY();
 			}
 		}
 		return new RectangleR(minX, minY, maxX - minX, maxY - minY);
