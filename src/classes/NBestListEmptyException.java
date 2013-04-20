@@ -1,4 +1,4 @@
-package sixthsense;
+package classes;
 
 public class NBestListEmptyException extends Exception {
 	

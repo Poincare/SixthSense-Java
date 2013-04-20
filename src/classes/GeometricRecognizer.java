@@ -1,4 +1,8 @@
-package sixthsense;
+/**
+ * @author Antoine Lavail
+ *
+ */
+package classes;
 
 import java.io.FileReader;
 import java.io.FileWriter;

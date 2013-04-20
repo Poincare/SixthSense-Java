@@ -1,7 +1,7 @@
 /**
  * Authors: Aroop Ganguly
  */
-package sixthsense;
+package classes;
 
 import java.util.ArrayList;
 import java.util.Collections;

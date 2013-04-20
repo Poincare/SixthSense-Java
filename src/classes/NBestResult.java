@@ -1,7 +1,7 @@
 /**
  * Authors: Aroop Ganguly
  */
-package sixthsense;
+package classes;
 
 @SuppressWarnings("rawtypes")
 public class NBestResult implements Comparable {

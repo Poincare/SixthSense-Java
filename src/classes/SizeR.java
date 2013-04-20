@@ -2,7 +2,7 @@
  * Authors: Dhaivat Pandya
  */
 
-package sixthsense;
+package classes;
 
 public class SizeR {
 	//width
