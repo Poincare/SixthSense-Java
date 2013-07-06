@@ -57,7 +57,7 @@ public class Category {
 			throw new Exception(
 					"Prototype name does not equal the name of the category to which it was added.");
 		}
-		// second, check if protypes exist or not
+		// second, check if prototypes exist or not
 		if (prototypes == null) {
 			prototypes = new ArrayList<Gesture>();
 			prototypes.add(p);
@@ -80,7 +80,8 @@ public class Category {
 	}
 	
 	public static String parseName(String s) {
-		String category = "";
+		//TODO: Verify this line below
+		String category = s;
 		for (int i = s.length() - 1; i >= 0; i--) {
 			if (Character.isDigit(s.charAt(i))) {
 				category = s.substring(0, i);

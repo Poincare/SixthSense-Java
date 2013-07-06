@@ -3,11 +3,15 @@
  */
 package sixthsense;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
+
+import classes.Category;
+import classes.Gesture;
+import classes.PointR;
 
 public class CategoryTest {
 	@Test
@@ -121,7 +125,7 @@ public class CategoryTest {
 	public void testAddExample() {
 		Category c = new Category("test");
 		try {
-			c.addExample(new Gesture("test1", null));
+			c.addExample(new Gesture("testKIKI", null));
 		}
 		catch (Exception e) {
 			if (e.getMessage().indexOf("Prototype name") != -1) {

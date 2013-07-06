@@ -7,6 +7,8 @@ import static org.junit.Assert.fail;
 
 import org.junit.Test;
 
+import classes.NBestList;
+
 public class NBestListTest {
 	@Test
 	public void testCtor() {

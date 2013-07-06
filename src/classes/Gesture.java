@@ -3,14 +3,17 @@
  */
 package classes;
 
+import java.util.ArrayList;
 import java.util.List;
 
 //: IComparable ?
 public class Gesture implements Comparable<Gesture>
 {
 	private String name;
-	// raw points (for drawing) -- read in
+	// raw points (for drawing) -- read in from XML
 	private List<PointR> rawPoints;
+	// resampled points (for matching) -- done when loaded
+	private List<PointR> points;
 
 	public List<PointR> getRawPoints() {
 		return rawPoints;
@@ -20,13 +23,6 @@ public class Gesture implements Comparable<Gesture>
 		this.rawPoints = rawPoints;
 	}
 
-	// from
-	// XML
-	// resampled points (for matching) -- done
-	private List<PointR> points;
-	// when
-
-	// loaded
 	public Gesture() {
 		this.setName("");
 		this.rawPoints = null;
@@ -49,23 +45,26 @@ public class Gesture implements Comparable<Gesture>
 	// point.
 	public Gesture(String name, List<PointR> points) {
 		this.setName(name);
-		// copy (saved for drawing)
-		this.rawPoints = points; 
-		// resample first (influences calculation of centroid)
-		// Points = Utils.Resample(points,
-		// GeometricRecognizer.NumResamplePoints);
-		//
-		// // rotate so that the centroid-to-1st-point is at zero degrees
-		// double radians = Utils.AngleInRadians(Utils.Centroid(Points),
-		// (PointR) Points[0], false);
-		// Points = Utils.RotateByRadians(Points, -radians); // undo angle
-		//
-		// // scale to a common (square) dimension
-		// Points = Utils.ScaleTo(Points, GeometricRecognizer.ResampleScale);
-		//
-		// // finally, translate to a common origin
-		// Points = Utils.TranslateCentroidTo(Points,
-		// GeometricRecognizer.ResampleOrigin);
+		if (points != null) {
+			// copy (saved for drawing)
+			this.rawPoints = new ArrayList<PointR>(points);
+			if (points.size() != 0) {
+				// resample first (influences calculation of centroid)
+				this.points = PointR.resample(points, GeometricRecognizer.NUMRESAMPLEPOINTS);
+				// rotate so that the centroid-to-1st-point is at zero degrees
+				double radians = PointR.getAngleInRadians(PointR.getCentroid(this.points), this.points.get(0), false);
+				// undo angle
+				this.points = PointR.rotateByRadians(this.points, -radians);
+				// scale to a common (square) dimension
+				this.points = PointR.scaleTo(this.points, GeometricRecognizer.RESAMPLESCALE);
+				// finally, translate to a common origin
+				this.points =  PointR.translateCentroidTo(this.points, GeometricRecognizer.RESAMPLEORIGIN);
+			}
+		}
+		else {
+			this.rawPoints = null;
+			this.points = null;
+		}
 	}
 
 	/**
@@ -100,7 +99,14 @@ public class Gesture implements Comparable<Gesture>
 	// / <param name="s"></param>
 	// / <returns></returns>
 	public static String parseName(String filename) {
-		int start = filename.lastIndexOf('\\');
+		String os = System.getProperty("os.name").toLowerCase();
+		int start = 0;
+		if (os.indexOf("win") >= 0) {
+			start = filename.lastIndexOf('\\');	
+		}
+		else {
+			start = filename.lastIndexOf('/');
+		}
 		int end = filename.lastIndexOf('.');
 		return filename.substring(start + 1, end);
 	}
@@ -119,6 +125,6 @@ public class Gesture implements Comparable<Gesture>
 	 */
 	@Override
 	public int compareTo(Gesture o) {
-			return getName().compareTo(o.getName());
+		return getName().compareTo(o.getName());
 	}
 }

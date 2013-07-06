@@ -7,17 +7,20 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import classes.Gesture;
+import classes.PointR;
+
 public class GestureTest {
 	@Test
 	public void testRawPoints() {
 		Gesture g = new Gesture();
 		ArrayList<PointR> a = new ArrayList<PointR>();
 		a.add(new PointR(1, 1, 0));
-		
+
 		g.setRawPoints(a);
-		
+
 		assertEquals(a, g.getRawPoints());
-		
+
 	}
 
 	@Test
@@ -27,7 +30,7 @@ public class GestureTest {
 			fail("Gesture not initialized properly");
 		}
 	}
-	
+
 	@Test
 	public void testCtorForNameAndRawPointsInit() {
 		Gesture g = new Gesture("new_gesture", new ArrayList<PointR>());
@@ -36,12 +39,12 @@ public class GestureTest {
 		}
 		// to be further implemented once GeometricRecognizer is implemented
 	}
-	
+
 	@Test
 	public void testDuration() {
 		// to be implemented once GeometricRecognizer is implemented
 	}
-	
+
 	@Test
 	public void testCompareTo() {
 		Gesture g1 = new Gesture("gest1", new ArrayList<PointR>());
@@ -54,11 +57,19 @@ public class GestureTest {
 			fail("Gesture compareTo not working properly");
 		}
 	}
-	
+
 	@Test
 	public void testParseName() {
-		if (!Gesture.ParseName("C:\\a\\b.txt").equals("b")) {
-			fail("parse name not working properly");
+		String OS = System.getProperty("os.name").toLowerCase();
+		if (OS.indexOf("win") >= 0) {
+			if (!Gesture.parseName("C:\\a\\b.txt").equals("b")) {
+				fail("parse name not working properly");
+			}
+		}
+		else {
+			if (!Gesture.parseName("/etc/local/b.txt").equals("b")) {
+				fail("parse name not working properly");
+			}
 		}
 	}
 }

@@ -4,6 +4,7 @@
 package classes;
 
 import java.util.List;
+import java.util.Objects;
 
 /*
  * RectangleR:
@@ -85,6 +86,7 @@ public class RectangleR {
 	
 	// basic equals override - checks equality of everything, not just if
 	// translated
+	@Override
 	public boolean equals(Object b) {
 		if (b instanceof RectangleR) {
 			RectangleR c = (RectangleR) b;
@@ -94,6 +96,11 @@ public class RectangleR {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(digits, x, y, width, height);
 	}
 	
 	// Find the largest box with the specified points

@@ -4,6 +4,8 @@
 
 package classes;
 
+import java.util.Objects;
+
 public class SizeR {
 	//width
 	private double cx;
@@ -36,6 +38,7 @@ public class SizeR {
 		cy = p.getCY();
 	}
 	
+	@Override
 	public boolean equals(Object a) {
 		if(a instanceof SizeR) {
 			SizeR sr = (SizeR)a;
@@ -44,6 +47,11 @@ public class SizeR {
 			}
 		}
 		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(cx, cy);
 	}
 	
 }

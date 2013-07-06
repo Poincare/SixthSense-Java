@@ -5,6 +5,7 @@ package classes;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /*
  * PointR
@@ -89,6 +90,7 @@ public class PointR {
 	}
 	
 	// basic equals override; checks all values
+	@Override
 	public boolean equals(Object a) {
 		if (a instanceof PointR) {
 			PointR b = (PointR) a;
@@ -98,6 +100,11 @@ public class PointR {
 			return false;
 		}
 		return false;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(x, y, t);
 	}
 	
 	// Static utility to get the centroid of a list of points
