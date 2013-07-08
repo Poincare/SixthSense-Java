@@ -271,13 +271,20 @@ public class GeometricRecognizer {
 			}
 			XMLOutputter xmlOutput = new XMLOutputter();
 			xmlOutput.setFormat(Format.getPrettyFormat());
-			// TODO: Changer la maniere d'enregistrer le fichier. Car une fois
-			// que le jar sera fait, impossible d'integrer de nouveaux fichiers.
-			// Une maniere de faire : lors de l'execution du jar, creer un
-			// dossier, ajouter les nouveaux fichiers, et lorsque l'application
-			// se termine, soit recreer le jar en integrant les nouveaux
-			// fichier, soit executer la commande jar avec l'option u pour
-			// ajouter les fichiers.
+			
+			// TODO: We will have to change how to save the file. Because when
+			// we will have a executable JAR file, it will be impossible to
+			// dynamically add new files into it (well I'm pretty sure about that,
+			// but maybe I'm wrong ?)
+			// One way to bypass this limitation : When we're executing the app with 
+			// the JAR file :
+			// 1. Create a temporary directory
+			// 2. Add the new files (like new gesture files)
+			// 3. Add into the exiting application listener, either :
+			// 4.1. Recreate a jar file with the new files, and delete the old one
+			// (and the temp directory).
+			// 4.2. Execute the jar command with the 'u' option, which you can use
+			// to update the contents of an existing JAR file.
 			xmlOutput.output(doc, new FileWriter(filename));
 
 		} catch (IOException e1) {
