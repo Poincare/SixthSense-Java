@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Gesture Name="testsave" NumPts="3" Millseconds="31" AppName="WUW01" AppVer="1.0.0.0" Date="Sat Jul 06 02:30:04 CEST 2013" TimeOfDay="Sat Jul 06 02:30:04 CEST 2013">
+  <Point X="355" Y="236" T="329031" />
+  <Point X="354" Y="236" T="329062" />
+  <Point X="353" Y="236" T="329062" />
+</Gesture>

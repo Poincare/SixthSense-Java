@@ -1,13 +1,14 @@
 /**
  * Authors: Aroop Ganguly
  */
-package sixthsense;
+package classes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Category {
 	private String name;
-	private ArrayList<Gesture> prototypes;
+	private List<Gesture> prototypes;
 	
 	public Category(String name) {
 		this.name = name;
@@ -20,7 +21,7 @@ public class Category {
 		addExample(firstExample);
 	}
 	
-	public Category(String name, ArrayList<?> examples) throws Exception {
+	public Category(String name, List<?> examples) throws Exception {
 		this.name = name;
 		prototypes = new ArrayList<Gesture>(examples.size());
 		for (int i = 0; i < examples.size(); i++) {
@@ -38,8 +39,9 @@ public class Category {
 	}
 	
 	public Gesture getGesture(int i) throws Exception {
-		if (prototypes == null)
+		if (prototypes == null) {
 			throw new Exception("prototypes not initialised");
+		}
 		if (0 <= i && i < prototypes.size()) {
 			return (Gesture) prototypes.get(i);
 		}
@@ -48,14 +50,14 @@ public class Category {
 		}
 	}
 	
-	public void addExample(Gesture p) throws Exception {
+	public final void addExample(Gesture p) throws Exception {
 		// first, ensure that p's name is right
 		String nameStr = parseName(p.getName());
 		if (!this.name.equals(nameStr)) {
 			throw new Exception(
 					"Prototype name does not equal the name of the category to which it was added.");
 		}
-		// second, check if protypes exist or not
+		// second, check if prototypes exist or not
 		if (prototypes == null) {
 			prototypes = new ArrayList<Gesture>();
 			prototypes.add(p);
@@ -78,14 +80,17 @@ public class Category {
 	}
 	
 	public static String parseName(String s) {
-		String category = "";
+		//TODO: Verify this line below
+		String category = s;
 		for (int i = s.length() - 1; i >= 0; i--) {
 			if (Character.isDigit(s.charAt(i))) {
 				category = s.substring(0, i);
-				if (Character.isDigit(s.charAt(i - 1)))
+				if (Character.isDigit(s.charAt(i - 1))) {
 					continue;
-				else
+				}
+				else {
 					break;
+				}
 			}
 		}
 		return category;
