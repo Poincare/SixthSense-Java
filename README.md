@@ -10,6 +10,7 @@ What's been ported so far:
   * Category
   * NBestList
   * NBestResult
+  * GeometricRecognizer
 
 Please help out!
 

@@ -3,16 +3,15 @@
               Any modifications will be overwritten.
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
-              as the first entry and export the buildfile again. -->
-<project basedir="." default="build" name="SixthSense-Java">
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="SixthSense-Java">
     <property environment="env"/>
-    <property name="ECLIPSE_HOME" value="../../Downloads/eclipse"/>
     <property name="junit.output.dir" value="junit"/>
     <property name="debuglevel" value="source,lines,vars"/>
-    <property name="target" value="1.6"/>
-    <property name="source" value="1.6"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
     <path id="SixthSense-Java.classpath">
         <pathelement location="bin"/>
+        <pathelement location="test/lib/jdom-2.0.5.jar"/>
         <pathelement location="test/lib/junit-4.11-SNAPSHOT-20120416-1530.jar"/>
     </path>
     <target name="init">
@@ -20,6 +19,7 @@
         <copy includeemptydirs="false" todir="bin">
             <fileset dir="src">
                 <exclude name="**/*.java"/>
+                <exclude name="resources/tests/testBatch/"/>
             </fileset>
         </copy>
         <copy includeemptydirs="false" todir="bin">
@@ -36,12 +36,10 @@
     <target name="build-subprojects"/>
     <target depends="init" name="build-project">
         <echo message="${ant.project.name}: ${ant.file}"/>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
             <src path="src"/>
-            <classpath refid="SixthSense-Java.classpath"/>
-        </javac>
-        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
             <src path="test"/>
+            <exclude name="resources/tests/testBatch/"/>
             <classpath refid="SixthSense-Java.classpath"/>
         </javac>
     </target>
@@ -59,58 +57,26 @@
         <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
         <antcall target="build"/>
     </target>
-	
-	
-    <target name="PointRTests">
+    <target name="GeometricRecognizerTest (1)">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
-            <test name="sixthsense.PointRTests" todir="${junit.output.dir}"/>
+            <test name="sixthsense.GeometricRecognizerTest" todir="${junit.output.dir}"/>
             <classpath refid="SixthSense-Java.classpath"/>
         </junit>
     </target>
-    <target name="RectangleRTest">
+    <target name="sixthsense">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr">
             <formatter type="xml"/>
+            <test name="sixthsense.CategoryTest" todir="${junit.output.dir}"/>
+            <test name="sixthsense.GeometricRecognizerTest" todir="${junit.output.dir}"/>
+            <test name="sixthsense.GestureTest" todir="${junit.output.dir}"/>
+            <test name="sixthsense.NBestListTest" todir="${junit.output.dir}"/>
+            <test name="sixthsense.NBestResultTest" todir="${junit.output.dir}"/>
+            <test name="sixthsense.PointRTest" todir="${junit.output.dir}"/>
             <test name="sixthsense.RectangleRTest" todir="${junit.output.dir}"/>
-            <classpath refid="SixthSense-Java.classpath"/>
-        </junit>
-    </target>
-    <target name="SizeRTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
             <test name="sixthsense.SizeRTest" todir="${junit.output.dir}"/>
-            <classpath refid="SixthSense-Java.classpath"/>
-        </junit>
-    </target>
-    <target name="SizeRTest.testGetWidthHeight">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="sixthsense.SizeRTest" todir="${junit.output.dir}"/>
-            <classpath refid="SixthSense-Java.classpath"/>
-        </junit>
-    </target>
-    <target name="Test">
-        <java classname="Test" failonerror="true" fork="yes">
-            <classpath refid="SixthSense-Java.classpath"/>
-        </java>
-    </target>
-    <target name="TestMultiply">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="sixthsense.TestMultiply" todir="${junit.output.dir}"/>
-            <classpath refid="SixthSense-Java.classpath"/>
-        </junit>
-    </target>
-    <target name="TestTry">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr">
-            <formatter type="xml"/>
-            <test name="sixthsense.TestTry" todir="${junit.output.dir}"/>
             <classpath refid="SixthSense-Java.classpath"/>
         </junit>
     </target>

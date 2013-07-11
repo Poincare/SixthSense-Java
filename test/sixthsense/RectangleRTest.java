@@ -3,12 +3,18 @@
  */
 package sixthsense;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.junit.Test;
+
+import classes.NotEnoughPointsException;
+import classes.PointR;
+import classes.RectangleR;
 
 public class RectangleRTest {
 	RectangleR rr;
@@ -26,7 +32,7 @@ public class RectangleRTest {
 	@Test
 	public void testTopLeft() {
 		PointR tl = rr.getTopleft();
-		assertTrue(tl.X == 2 && tl.Y == 3);
+		assertTrue(tl.getX() == 2 && tl.getY() == 3);
 	}
 	
 	@Test
